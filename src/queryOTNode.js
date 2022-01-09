@@ -7,7 +7,7 @@ let options = {
   endpoint: OT_NODE_HOSTNAME,
   port: OT_NODE_PORT,
   useSSL: false,
-  maxNumberOfRetries: 10,
+  maxNumberOfRetries: 30,
 };
 const dkg = new DKGClient(options);
 
