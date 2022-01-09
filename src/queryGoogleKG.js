@@ -1,12 +1,12 @@
 const axios = require("axios");
 const fs = require("fs");
-const randomWord = require("random-word");
+var randomWords = require("random-words");
 const { compact } = require("jsonld");
 
 const maxRetries = 3;
 
 module.exports = getRandomGoogle = async () => {
-  const query = randomWord();
+  const query = randomWords();
   let result;
   let retries = 0;
   do {

@@ -13,6 +13,6 @@
     "dkg-client": "github:zeroxbt/dkg-client#v6/develop",
     "dotenv": "^10.0.0",
     "jsonld": "^5.2.0",
-    "random-word": "^2.0.0"
+    "random-words": "^1.1.1"
   }
 }
