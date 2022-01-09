@@ -35,18 +35,22 @@ module.exports = getRandomGoogle = async () => {
 
   console.log("Finished writing dataset!");
 
-  const assets = dataSet["@graph"].reduce((set, item) => {
-    const type = item["http://schema.org/result"]["@type"];
-    if (Array.isArray(type)) type.forEach((t) => set.add(t));
-    else if (type) set.add(type);
-    return set;
-  }, new Set());
+  const assets = Array.isArray(dataSet["@graph"])
+    ? dataSet["@graph"].reduce((set, item) => {
+        const type = item["http://schema.org/result"]["@type"];
+        if (Array.isArray(type)) type.forEach((t) => set.add(t));
+        else if (type) set.add(type);
+        return set;
+      }, new Set())
+    : [];
 
-  const keywords = dataSet["@graph"].reduce((set, item) => {
-    const id = item["http://schema.org/result"]["http://schema.org/name"];
-    if (id) set.add(id);
-    return set;
-  }, new Set());
+  const keywords = Array.isArray(dataSet["@graph"])
+    ? dataSet["@graph"].reduce((set, item) => {
+        const id = item["http://schema.org/result"]["http://schema.org/name"];
+        if (id) set.add(id);
+        return set;
+      }, new Set())
+    : [];
 
   return { assets: [...assets], keywords: [...keywords] };
 };
