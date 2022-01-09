@@ -7,6 +7,7 @@ const maxRetries = 3;
 
 module.exports = getRandomGoogle = async () => {
   const query = randomWords();
+  const query2 = randomWords();
   let result;
   let retries = 0;
   do {
@@ -16,7 +17,7 @@ module.exports = getRandomGoogle = async () => {
     }
     result = await axios
       .get(
-        `https://kgsearch.googleapis.com/v1/entities:search?query=${query}&key=${process.env.GOOGLE_API_KEY}&indent=true`
+        `https://kgsearch.googleapis.com/v1/entities:search?query=${query}-${query2}&key=${process.env.GOOGLE_API_KEY}&indent=true`
       )
       .catch((error) => {
         console.log(`error querying googleapis.com ${error}`);
