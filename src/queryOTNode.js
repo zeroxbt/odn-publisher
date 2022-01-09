@@ -11,9 +11,9 @@ let options = {
 };
 const dkg = new DKGClient(options);
 
-module.exports = publish = async (assets, keywords) => {
+module.exports = publish = async (assets, keywords, filepath) => {
   options = {
-    filepath: "google.json",
+    filepath,
     assets,
     keywords,
     visibility: true,
