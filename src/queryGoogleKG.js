@@ -5,7 +5,7 @@ const { compact } = require("jsonld");
 
 const maxRetries = 3;
 
-module.exports = getRandomWikidata = async () => {
+module.exports = getRandomGoogle = async () => {
   const query = randomWord();
   let result;
   let retries = 0;
@@ -47,5 +47,8 @@ module.exports = getRandomWikidata = async () => {
     return set;
   }, new Set());
 
-  return { assets: [], keywords: [...keywords] };
+  console.log(assets);
+  console.log(keywords);
+
+  return { assets: [], keywords: [] };
 };
