@@ -47,8 +47,5 @@ module.exports = getRandomGoogle = async () => {
     return set;
   }, new Set());
 
-  console.log(assets);
-  console.log(keywords);
-
-  return { assets: [], keywords: [...assets] };
+  return { assets: [...assets], keywords: [...keywords] };
 };
