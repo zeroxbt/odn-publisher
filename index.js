@@ -4,9 +4,11 @@ require("dotenv").config();
 
 const googleDataset = "google.json";
 const publish = async () => {
-  getRandomGoogle().then(async ({ assets, keywords }) => {
-    await publishToODN(assets, keywords, googleDataset);
-    publish();
-  });
+  getRandomGoogle()
+    .then(async ({ assets, keywords }) => {
+      await publishToODN(assets, keywords, googleDataset);
+      publish();
+    })
+    .catch((err) => console.log(`Error : ${error}`));
 };
 publish();
