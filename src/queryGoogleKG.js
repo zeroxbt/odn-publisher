@@ -50,5 +50,5 @@ module.exports = getRandomGoogle = async () => {
   console.log(assets);
   console.log(keywords);
 
-  return { assets: [], keywords: [] };
+  return { assets: [], keywords: [...assets] };
 };
