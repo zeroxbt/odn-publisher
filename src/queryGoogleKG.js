@@ -42,7 +42,7 @@ module.exports = getRandomWikidata = async () => {
   }, new Set());
 
   const keywords = dataSet["@graph"].reduce((set, item) => {
-    const id = item["http://schema.org/result"]["name"];
+    const id = item["http://schema.org/result"]["http://schema.org/name"];
     if (id) set.add(id);
     return set;
   }, new Set());
