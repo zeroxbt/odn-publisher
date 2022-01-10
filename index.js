@@ -23,7 +23,7 @@ const publish = async () => {
   randomQuery
     .getData()
     .then(async ({ assets, keywords }) => {
-      await publishToODN(assets, keywords, googleDataset);
+      await publishToODN(assets, keywords, randomQuery.filepath);
       publish();
     })
     .catch((error) => console.log(`Error : ${error}`));
