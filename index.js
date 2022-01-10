@@ -5,7 +5,7 @@ require("dotenv").config();
 const publish = async () => {
   const query = randomQuery();
   console.log(`About to publish dataset taken from ${query.name}`);
-  query()
+  query
     .getData()
     .then(async ({ assets, keywords }) => {
       await publishToODN(assets, keywords, query.filepath);
