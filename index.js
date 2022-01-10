@@ -13,6 +13,6 @@ const publish = async () => {
       await publishToODN(assets, keywords, googleDataset);
       publish();
     })
-    .catch((err) => console.log(`Error : ${error}`));
+    .catch((error) => console.log(`Error : ${error}`));
 };
 publish();
