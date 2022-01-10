@@ -1,33 +1,13 @@
-const axios = require("axios");
 const fs = require("fs");
 var randomWords = require("random-words");
 const { compact } = require("jsonld");
-
-const maxRetries = 3;
-
-const sleepForMilliseconds = async (milliseconds) => {
-  await new Promise((r) => setTimeout(r, milliseconds));
-};
+const queryAPI = require("../util/queryAPI");
+const { getGoogle } = require("../util/queryOptions");
 
 module.exports = getRandomGoogle = async () => {
-  const query = randomWords();
-  const query2 = randomWords();
-  let result;
-  let retries = 0;
-  do {
-    sleepForMilliseconds(retries * 5 * 1000);
-    retries++;
-    if (retries > maxRetries) {
-      throw new Error("Error : unable to query googleapis.com");
-    }
-    result = await axios
-      .get(
-        `https://kgsearch.googleapis.com/v1/entities:search?query=${query}-${query2}&key=${process.env.GOOGLE_API_KEY}&limit=500&indent=true`
-      )
-      .catch((error) => {
-        console.log(`error querying googleapis.com ${error}`);
-      });
-  } while (!result);
+  const query = `${randomWords()}-${randomWords()}`;
+  const queryOptions = getGoogle(query);
+  const result = await queryAPI(queryOptions);
 
   const compacted = await compact(result.data, {});
 
@@ -37,8 +17,6 @@ module.exports = getRandomGoogle = async () => {
   };
 
   await fs.promises.writeFile(`datasets/google.json`, JSON.stringify(dataSet));
-
-  console.log("Finished writing dataset!");
 
   const assets = Array.isArray(dataSet["@graph"])
     ? dataSet["@graph"].reduce((set, item) => {
