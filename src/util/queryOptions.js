@@ -33,3 +33,24 @@ exports.getWeather = () => ({
     },
   }),
 });
+
+exports.getNewspaper = (queryWord) => ({
+  getRecord: () => ({
+    path: `https://newspapers.eanadev.org/api/v2/search.json?query=${queryWord}&profile=hits&wskey=uglavediab`,
+    config: {
+      params: {
+        query: queryWord,
+        profile: 'hits',
+        key: 'uglavediab',
+      },
+    },
+  }),
+  getManifest: (recordID) => ({
+    path: `https://iiif.europeana.eu/presentation/${recordID}/manifest`,
+    config: {
+      params: {
+        //
+      },
+    },
+  }),
+});
