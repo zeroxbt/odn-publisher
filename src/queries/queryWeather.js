@@ -17,7 +17,7 @@ module.exports = getRandomWeatherdata = async () => {
   delete latest_station_observations.data["@context"][1]["@version"];
 
   fs.writeFileSync(
-    "weatherdata.json",
+    "datasets/weather.json",
     JSON.stringify(latest_station_observations.data)
   );
 
