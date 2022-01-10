@@ -14,3 +14,22 @@ exports.getGoogle = (query) => ({
     },
   },
 });
+
+exports.getWeather = () => ({
+  getStations: () => ({
+    path: `https://api.weather.gov/stations?`,
+    config: {
+      params: {
+        limit: 500,
+      },
+    },
+  }),
+  getObservations: (stationId) => ({
+    path: `https://api.weather.gov/stations/${stationId}/observations/latest?`,
+    config: {
+      params: {
+        require_qcf: false,
+      },
+    },
+  }),
+});

@@ -1,5 +1,6 @@
 const getRandomWikidata = require("../queries/queryWikidata");
 const getRandomGoogle = require("../queries/queryGoogleKG");
+const getRandomWeather = require("../queries/queryWeather");
 
 const queryTypes = [
   {
@@ -11,6 +12,11 @@ const queryTypes = [
     name: "google",
     getData: () => getRandomGoogle(),
     filepath: "datasets/google.json",
+  },
+  {
+    name: "weather",
+    getData: () => getRandomWeather(),
+    filepath: "datasets/weather.json",
   },
 ];
 
