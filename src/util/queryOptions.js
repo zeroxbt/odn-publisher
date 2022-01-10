@@ -34,14 +34,14 @@ exports.getWeather = () => ({
   }),
 });
 
-exports.getNewspaper = (queryWord) => ({
-  getRecord: () => ({
-    path: `https://newspapers.eanadev.org/api/v2/search.json?query=${queryWord}&profile=hits&wskey=uglavediab`,
+exports.getNewspaper = () => ({
+  getRecord: (queryWord) => ({
+    path: `https://newspapers.eanadev.org/api/v2/search.json?`,
     config: {
       params: {
         query: queryWord,
         profile: 'hits',
-        key: 'uglavediab',
+        wskey: 'uglavediab',
       },
     },
   }),

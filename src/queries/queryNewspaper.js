@@ -4,7 +4,8 @@ const { getNewspaper } = require("../util/queryOptions");
 var randomWords = require("random-words");
 
 module.exports = getRandomNewspaperdata = async () => {
-  let queryOptions = getNewspaper().getRecord();
+  const queryWord = randomWords();
+  let queryOptions = getNewspaper().getRecord(queryWord);
   const result = await queryAPI(queryOptions);
   recordID = result.data.hits[0].scope
 
