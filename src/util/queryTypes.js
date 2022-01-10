@@ -16,5 +16,5 @@ const queryTypes = [
 
 module.exports = randomQuery = () => {
   const randomIndex = Math.floor(Math.random() * queryTypes.length);
-  return (randomQuery = queryTypes[randomIndex]);
+  return queryTypes[randomIndex];
 };
