@@ -2,6 +2,7 @@ const getRandomWikidata = require("../queries/queryWikidata");
 const getRandomGoogle = require("../queries/queryGoogleKG");
 const getRandomWeather = require("../queries/queryWeather");
 const getRandomNewspaper = require("../queries/queryNewspaper");
+const getRandomMarineRegions= require("../queries/queryMarineRegions");
 
 const queryTypes = [
   {
@@ -24,12 +25,12 @@ const queryTypes = [
     getData: () => getRandomNewspaper(),
     filepath: "datasets/newspaper.json",
   },
+  {
+    name: "marine regions",
+    getData: () => getRandomMarineRegions(),
+    filepath: "datasets/marineregions.json",
+  }
 ];
-
-// module.exports = randomQuery = () => {
-//   const randomIndex = Math.floor(Math.random() * queryTypes.length);
-//   return queryTypes[randomIndex];
-// };
 
 module.exports = {
   query: async function query(index){

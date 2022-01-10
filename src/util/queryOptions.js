@@ -54,3 +54,12 @@ exports.getNewspaper = () => ({
     },
   }),
 });
+
+exports.getMarineRegions = (mrgid) => ({
+  path: `https://www.marineregions.org/rest/getGazetteerRecordByMRGID.jsonld/${mrgid}/`,
+  config: {
+    params: {
+      //
+    },
+  },
+});
