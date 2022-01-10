@@ -20,7 +20,5 @@ module.exports = getRandomWikidata = async () => {
     JSON.stringify(dataSet)
   );
 
-  console.log("Finished writing dataset!");
-
   return { assets: [dataSet["@type"]], keywords: [dataSet["@id"]] };
 };
