@@ -36,7 +36,7 @@ module.exports = getRandomGoogle = async () => {
     "@type": query,
   };
 
-  await fs.promises.writeFile(`/datasets/google.json`, JSON.stringify(dataSet));
+  await fs.promises.writeFile(`datasets/google.json`, JSON.stringify(dataSet));
 
   console.log("Finished writing dataset!");
 
