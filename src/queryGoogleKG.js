@@ -37,7 +37,7 @@ module.exports = getRandomGoogle = async () => {
   };
 
   await fs.promises.writeFile(
-    `../datasets/wikidata.json`,
+    `./../datasets/wikidata.json`,
     JSON.stringify(dataSet)
   );
 
