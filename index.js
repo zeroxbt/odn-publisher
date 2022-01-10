@@ -1,4 +1,4 @@
-const publishToODN = require("./src/queryOTNode");
+const publishToODN = require("./src/queries/queryOTNode");
 const randomQuery = require("./src/util/queryTypes");
 require("dotenv").config();
 
