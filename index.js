@@ -6,12 +6,12 @@ require("dotenv").config();
 const queryTypes = [
   {
     name: "wikidata",
-    getData: () => getRandomWikidata,
+    getData: () => getRandomWikidata(),
     filepath: "datasets/wikidata.json",
   },
   {
     name: "google",
-    getData: () => getRandomGoogle,
+    getData: () => getRandomGoogle(),
     filepath: "datasets/google.json",
   },
 ];
