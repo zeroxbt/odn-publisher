@@ -4,7 +4,7 @@ exports.getWikidata = (dataId) => ({
 });
 
 exports.getGoogle = (query) => ({
-  path: `https://kgsearch.googleapis.com/v1/entities:search`,
+  path: `https://kgsearch.googleapis.com/v1/entities:search?`,
   config: {
     params: { ...(query && { query }) },
     key: process.env.GOOGLE_API_KEY,
