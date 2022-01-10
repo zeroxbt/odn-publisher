@@ -28,7 +28,7 @@ exports.getWeather = () => ({
     path: `https://api.weather.gov/stations/${stationId}/observations/latest?`,
     config: {
       params: {
-        require_qcf: false,
+        require_qc: false,
       },
     },
   }),
