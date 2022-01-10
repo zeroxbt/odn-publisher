@@ -1,10 +1,6 @@
-const getRandomGoogle = require("./src/bulkQueries/queryGoogleKG");
+const getRandomGoogle = require("./src/queryGoogleKG");
 const publishToODN = require("./src/queryOTNode");
 require("dotenv").config();
-
-const sleepForMilliseconds = async (milliseconds) => {
-  await new Promise((r) => setTimeout(r, milliseconds));
-};
 
 const googleDataset = "google.json";
 const publish = async () => {

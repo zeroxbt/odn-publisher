@@ -5,19 +5,24 @@ const { compact } = require("jsonld");
 
 const maxRetries = 3;
 
+const sleepForMilliseconds = async (milliseconds) => {
+  await new Promise((r) => setTimeout(r, milliseconds));
+};
+
 module.exports = getRandomGoogle = async () => {
   const query = randomWords();
   const query2 = randomWords();
   let result;
   let retries = 0;
   do {
+    sleepForMilliseconds(retries * 5 * 1000);
     retries++;
     if (retries > maxRetries) {
       throw new Error("Error : unable to query googleapis.com");
     }
     result = await axios
       .get(
-        `https://kgsearch.googleapis.com/v1/entities:search?query=${query}-${query2}&key=${process.env.GOOGLE_API_KEY}&indent=true`
+        `https://kgsearch.googleapis.com/v1/entities:search?query=${query}-${query2}&key=${process.env.GOOGLE_API_KEY}&limit=500&indent=true`
       )
       .catch((error) => {
         console.log(`error querying googleapis.com ${error}`);
