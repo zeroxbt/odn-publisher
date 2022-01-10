@@ -1,5 +1,5 @@
-const getRandomWikidata = require("./src/queryWikidata");
-const getRandomGoogle = require("./src/queries/queryGoogleKG");
+const getRandomWikidata = require("../queries/queryWikidata");
+const getRandomGoogle = require("../queries/queryGoogleKG");
 
 const queryTypes = [
   {
