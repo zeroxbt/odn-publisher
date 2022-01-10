@@ -1,4 +1,4 @@
-const getRandomGoogle = require("./src/queryGoogleKG");
+const getRandomGoogle = require("./src/bulkQueries/queryGoogleKG");
 const publishToODN = require("./src/queryOTNode");
 require("dotenv").config();
 
@@ -11,7 +11,6 @@ const publish = async () => {
   getRandomGoogle()
     .then(async ({ assets, keywords }) => {
       await publishToODN(assets, keywords, googleDataset);
-      await sleepForMilliseconds(6 * 1000);
       publish();
     })
     .catch((err) => console.log(`Error : ${error}`));
