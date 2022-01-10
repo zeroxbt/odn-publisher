@@ -17,7 +17,7 @@ const queryTypes = [
 ];
 
 const publish = async () => {
-  const randomQuery = Math.random() * (queryTypes.length - 1);
+  const randomQuery = queryTypes[Math.random() * (queryTypes.length - 1)];
   console.log(`About to publish dataset taken from ${randomQuery.name}`);
   randomQuery
     .getData()
