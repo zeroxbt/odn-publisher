@@ -7,7 +7,7 @@ module.exports = getRandomNewspaperdata = async () => {
   const queryWord = randomWords();
   let queryOptions = getNewspaper().getRecord(queryWord);
   const result = await queryAPI(queryOptions);
-  const randomHit = Math.floor(Math.random() * result.hits.length);
+  const randomHit = Math.floor(Math.random() * result.data.hits.length);
   const recordID = result.data.hits[randomHit].scope;
 
   queryOptions = getNewspaper().getManifest(recordID);
