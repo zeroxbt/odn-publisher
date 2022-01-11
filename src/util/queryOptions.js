@@ -1,10 +1,10 @@
 exports.getWikidata = (dataId) => ({
-  url: `https://www.wikidata.org/wiki/Special:EntityData/Q${dataId}.jsonld`,
+  path: `https://www.wikidata.org/wiki/Special:EntityData/Q${dataId}.jsonld`,
   config: {},
 });
 
 exports.getGoogle = (query) => ({
-  url: `https://kgsearch.googleapis.com/v1/entities:search?`,
+  path: `https://kgsearch.googleapis.com/v1/entities:search?`,
   config: {
     params: {
       ...(query && { query }),
@@ -17,7 +17,7 @@ exports.getGoogle = (query) => ({
 
 exports.getWeather = () => ({
   getStations: () => ({
-    url: `https://api.weather.gov/stations?`,
+    path: `https://api.weather.gov/stations?`,
     config: {
       params: {
         limit: 500,
@@ -25,7 +25,7 @@ exports.getWeather = () => ({
     },
   }),
   getObservations: (stationId) => ({
-    url: `https://api.weather.gov/stations/${stationId}/observations/latest?`,
+    path: `https://api.weather.gov/stations/${stationId}/observations/latest?`,
     config: {
       params: {
         require_qc: false,
@@ -36,7 +36,7 @@ exports.getWeather = () => ({
 
 exports.getNewspaper = () => ({
   getRecord: (queryWord) => ({
-    url: `https://newspapers.eanadev.org/api/v2/search.json?`,
+    path: `https://newspapers.eanadev.org/api/v2/search.json?`,
     config: {
       params: {
         query: queryWord,
@@ -46,7 +46,7 @@ exports.getNewspaper = () => ({
     },
   }),
   getManifest: (recordID) => ({
-    url: `https://iiif.europeana.eu/presentation/${recordID}/manifest`,
+    path: `https://iiif.europeana.eu/presentation/${recordID}/manifest`,
     config: {
       params: {
         //
@@ -56,7 +56,7 @@ exports.getNewspaper = () => ({
 });
 
 exports.getMarineRegions = (mrgid) => ({
-  url: `https://www.marineregions.org/rest/getGazetteerRecordByMRGID.jsonld/${mrgid}/`,
+  path: `https://www.marineregions.org/rest/getGazetteerRecordByMRGID.jsonld/${mrgid}/`,
   config: {
     params: {
       //
@@ -65,7 +65,7 @@ exports.getMarineRegions = (mrgid) => ({
 });
 
 exports.getRandomDPLA = (phrase) => ({
-  url: `https://api.dp.la/v2/items?`,
+  path: `https://api.dp.la/v2/items?`,
   config: {
     params: {
       q: phrase,
@@ -76,7 +76,7 @@ exports.getRandomDPLA = (phrase) => ({
 
 exports.getArcticInfrastructure = () => ({
   getRecord: (page, itemsPerPage) => ({
-    url: `https://isaaffik.org/api/infrastructures.jsonld?`,
+    path: `https://isaaffik.org/api/infrastructures.jsonld?`,
     config: {
       params: {
         page,
@@ -86,10 +86,13 @@ exports.getArcticInfrastructure = () => ({
     },
   }),
   getInfrastructure: (recordID) => ({
-    url: `https://isaaffik.org${recordID}/`,
+    path: `https://isaaffik.org${recordID}/`,
     config: {
       params: {
         //
+      },
+      headers: {
+        accept: "application / ld + json",
       },
     },
   }),
