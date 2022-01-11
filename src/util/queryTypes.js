@@ -45,10 +45,10 @@ const queryTypes = [
 ];
 
 module.exports = {
-  query: async function query(index) {
+  query: function query(index) {
     return queryTypes[index];
   },
-  queryListLen: async function queryListLen() {
+  queryListLen: function queryListLen() {
     return queryTypes.length;
   },
 };
