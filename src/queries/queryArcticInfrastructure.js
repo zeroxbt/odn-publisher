@@ -3,7 +3,7 @@ const queryAPI = require("../util/queryAPI");
 const { getArcticInfrastructure } = require("../util/queryOptions");
 
 module.exports = getRandomArcticInfradata = async () => {
-  const pageIndex = Math.floor(Math.random() * 7);
+  const pageIndex = Math.floor(Math.random() * 8);
   const infraIndex = Math.floor(Math.random() * 100);
   let queryOptions = getArcticInfrastructure().getRecord(pageIndex, 100);
   const result = await queryAPI(queryOptions);

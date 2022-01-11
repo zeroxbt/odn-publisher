@@ -9,14 +9,8 @@ module.exports = getRandomMarineRegionsdata = async () => {
 
   fs.writeFileSync("datasets/marineregions.json", JSON.stringify(result.data));
 
-  const assets = Array.isArray(result.data["@type"])
-    ? result.data["@type"]
-    : [result.data["@type"]];
-
-  const keywords = result.data["@id"];
-
   return {
-    assets,
-    keywords,
+    assets: [...result.data["@type"]],
+    keywords: [result.data["@id"]],
   };
 };
