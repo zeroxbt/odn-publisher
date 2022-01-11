@@ -10,18 +10,8 @@ module.exports = getRandomDPLAdata = async () => {
   const result = await queryAPI(queryOptions);
 
   const dataSet = result.data;
-  console.log(dataSet.docs[0]);
   //just write the first doc returned
   fs.writeFileSync("datasets/dpla.json", JSON.stringify(dataSet));
-
-  console.log(Array.isArray(dataSet.docs));
-  console.log(
-    dataSet.docs.reduce((set, item) => {
-      const id = item["@id"];
-      if (id) set.add(id);
-      return set;
-    }, new Set())
-  );
 
   const assets = Array.isArray(dataSet.docs)
     ? dataSet.docs.reduce((set, item) => {
