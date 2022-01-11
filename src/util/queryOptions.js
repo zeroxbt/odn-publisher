@@ -41,7 +41,7 @@ exports.getNewspaper = () => ({
       params: {
         query: queryWord,
         profile: 'hits',
-        wskey: 'uglavediab',
+        wskey: process.env.WSKEY
       },
     },
   }),
@@ -60,6 +60,16 @@ exports.getMarineRegions = (mrgid) => ({
   config: {
     params: {
       //
+    },
+  },
+});
+
+exports.getRandomDPLA = (phrase) => ({
+  path: `https://api.dp.la/v2/items?`,
+  config: {
+    params: {
+      q: phrase,
+      api_key: process.env.DPLA_KEY,
     },
   },
 });

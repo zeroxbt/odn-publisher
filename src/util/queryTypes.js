@@ -3,6 +3,7 @@ const getRandomGoogle = require("../queries/queryGoogleKG");
 const getRandomWeather = require("../queries/queryWeather");
 const getRandomNewspaper = require("../queries/queryNewspaper");
 const getRandomMarineRegions= require("../queries/queryMarineRegions");
+const getRandomDPLA= require("../queries/queryDPLA");
 
 const queryTypes = [
   {
@@ -29,6 +30,11 @@ const queryTypes = [
     name: "marineregions.org",
     getData: () => getRandomMarineRegions(),
     filepath: "datasets/marineregions.json",
+  },
+  {
+    name: "digital public library of america",
+    getData: () => getRandomDPLA(),
+    filepath: "datasets/dpla.json",
   }
 ];
 
