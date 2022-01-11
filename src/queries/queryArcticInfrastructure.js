@@ -13,13 +13,21 @@ module.exports = getRandomArcticInfradata = async () => {
   queryOptions = getArcticInfrastructure().getInfrastructure(recordID);
   const infra = await queryAPI(queryOptions);
 
+  queryOptions = getArcticInfrastructure().getContext();
+  const context = await queryAPI(queryOptions);
+
+  const dataSet = {
+    ...infra.data,
+    "@context": context["@context"],
+  };
+
   fs.writeFileSync(
     "datasets/arcticinfrastructure.json",
-    JSON.stringify(infra.data)
+    JSON.stringify(dataSet)
   );
 
   return {
-    assets: [infra.data["@type"]],
-    keywords: [infra.data["@id"]],
+    assets: [dataSet["@type"]],
+    keywords: [dataSet["@id"]],
   };
 };

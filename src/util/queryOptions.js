@@ -47,21 +47,13 @@ exports.getNewspaper = () => ({
   }),
   getManifest: (recordID) => ({
     path: `https://iiif.europeana.eu/presentation/${recordID}/manifest`,
-    config: {
-      params: {
-        //
-      },
-    },
+    config: {},
   }),
 });
 
 exports.getMarineRegions = (mrgid) => ({
   path: `https://www.marineregions.org/rest/getGazetteerRecordByMRGID.jsonld/${mrgid}/`,
-  config: {
-    params: {
-      //
-    },
-  },
+  config: {},
 });
 
 exports.getRandomDPLA = (phrase) => ({
@@ -87,10 +79,10 @@ exports.getArcticInfrastructure = () => ({
   }),
   getInfrastructure: (recordID) => ({
     path: `https://isaaffik.org${recordID}.jsonld`,
-    config: {
-      params: {
-        //
-      },
-    },
+    config: {},
+  }),
+  getContext: () => ({
+    path: "https://isaaffik.org/api/contexts/Infrastructure",
+    config: {},
   }),
 });
