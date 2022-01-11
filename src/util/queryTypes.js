@@ -16,17 +16,17 @@ const queryTypes = [
     filepath: "datasets/google.json",
   },
   {
-    name: "weather",
+    name: "weather.gov",
     getData: () => getRandomWeather(),
     filepath: "datasets/weather.json",
   },
   {
-    name: "newspaper",
+    name: "europeana.eu",
     getData: () => getRandomNewspaper(),
     filepath: "datasets/newspaper.json",
   },
   {
-    name: "marine regions",
+    name: "marineregions.org",
     getData: () => getRandomMarineRegions(),
     filepath: "datasets/marineregions.json",
   }

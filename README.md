@@ -7,3 +7,5 @@ Running Origintrail V6 Beta 1 testnode required.
 Install: sudo git clone https://github.com/zeroxbt/odn-publisher.git && cd odn-publisher && sudo npm i
 
 Run: npm start
+
+To make a DPLA(digital public library of america) api key: curl -v -XPOST https://api.dp.la/v2/api_key/email_here
