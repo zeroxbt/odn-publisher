@@ -2,8 +2,9 @@ const getRandomWikidata = require("../queries/queryWikidata");
 const getRandomGoogle = require("../queries/queryGoogleKG");
 const getRandomWeather = require("../queries/queryWeather");
 const getRandomNewspaper = require("../queries/queryNewspaper");
-const getRandomMarineRegions = require("../queries/queryMarineRegions");
-const getRandomDPLA = require("../queries/queryDPLA");
+const getRandomMarineRegions= require("../queries/queryMarineRegions");
+const getRandomDPLA= require("../queries/queryDPLA");
+const getRandomArcticInfrastructure= require("../queries/queryArcticInfrastructure");
 
 const queryTypes = [
   {
@@ -36,13 +37,18 @@ const queryTypes = [
     getData: () => getRandomDPLA(),
     filepath: "datasets/dpla.json",
   },
+  {
+    name: "isaaffik.org on arctic infrastructure",
+    getData: () => getRandomArcticInfrastructure(),
+    filepath: "datasets/arcticinfrastructure.json",
+  }
 ];
 
 module.exports = {
-  query: function query(index) {
+  query: async function query(index){
     return queryTypes[index];
   },
-  queryListLen: function queryListLen() {
+  queryListLen: async function queryListLen(){
     return queryTypes.length;
-  },
-};
+  }
+}

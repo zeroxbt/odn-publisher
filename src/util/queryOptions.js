@@ -7,7 +7,7 @@ exports.getGoogle = (query) => ({
   path: `https://kgsearch.googleapis.com/v1/entities:search?`,
   config: {
     params: {
-      query,
+      ...(query && { query }),
       key: process.env.GOOGLE_API_KEY,
       limit: 500,
       indent: true,
@@ -40,8 +40,8 @@ exports.getNewspaper = () => ({
     config: {
       params: {
         query: queryWord,
-        profile: "hits",
-        wskey: process.env.WSKEY,
+        profile: 'hits',
+        wskey: process.env.WSKEY
       },
     },
   }),
@@ -72,4 +72,25 @@ exports.getRandomDPLA = (phrase) => ({
       api_key: process.env.DPLA_KEY,
     },
   },
+});
+
+exports.getArcticInfrastructure = () => ({
+  getRecord: (pageIndex,perPage) => ({
+    path: `https://isaaffik.org/api/infrastructures?`,
+    config: {
+      params: {
+        page: pageIndex,
+        itemsPerPage: perPage,
+        pagination: true
+      },
+    },
+  }),
+  getInfrastructure: (recordID) => ({
+    path: `https://isaaffik.org${recordID}/`,
+    config: {
+      params: {
+        //
+      },
+    },
+  }),
 });
