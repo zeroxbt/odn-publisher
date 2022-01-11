@@ -3,9 +3,10 @@ const queryTypes = require("./src/util/queryTypes");
 require("dotenv").config();
 
 const publish = async () => {
-  const queryListLen = await queryTypes.queryListLen();
-  for(var queryIndex = 0; queryIndex <= queryListLen; queryIndex++){
-    query = await queryTypes.query(queryIndex);
+  let queryIndex = 0;
+  const queryListLen = queryTypes.queryListLen();
+  while (true) {
+    query = queryTypes.query(queryIndex);
     console.log(`About to publish dataset taken from ${query.name}`);
     await query
       .getData()
@@ -13,10 +14,7 @@ const publish = async () => {
         await publishToODN(assets, keywords, query.filepath);
       })
       .catch((error) => console.log(`Error : ${error}`));
-
-      if(queryIndex == queryListLen -1){
-        queryIndex = -1;
-      }
+    queryIndex = (queryIndex + 1) % queryListLen;
   }
 };
 publish();

@@ -2,8 +2,8 @@ const getRandomWikidata = require("../queries/queryWikidata");
 const getRandomGoogle = require("../queries/queryGoogleKG");
 const getRandomWeather = require("../queries/queryWeather");
 const getRandomNewspaper = require("../queries/queryNewspaper");
-const getRandomMarineRegions= require("../queries/queryMarineRegions");
-const getRandomDPLA= require("../queries/queryDPLA");
+const getRandomMarineRegions = require("../queries/queryMarineRegions");
+const getRandomDPLA = require("../queries/queryDPLA");
 
 const queryTypes = [
   {
@@ -35,14 +35,14 @@ const queryTypes = [
     name: "digital public library of america",
     getData: () => getRandomDPLA(),
     filepath: "datasets/dpla.json",
-  }
+  },
 ];
 
 module.exports = {
-  query: async function query(index){
+  query: function query(index) {
     return queryTypes[index];
   },
-  queryListLen: async function queryListLen(){
+  queryListLen: function queryListLen() {
     return queryTypes.length;
-  }
-}
+  },
+};

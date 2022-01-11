@@ -9,10 +9,7 @@ module.exports = getRandomDPLAdata = async () => {
   const result = await queryAPI(queryOptions);
 
   //just write the first doc returned
-  fs.writeFileSync(
-    "datasets/dpla.json",
-    JSON.stringify(result.data)
-  );
+  fs.writeFileSync("datasets/dpla.json", JSON.stringify(result.data));
 
   return {
     assets: [result.data.docs[0]["@type"]],

@@ -7,15 +7,12 @@ module.exports = getRandomNewspaperdata = async () => {
   const queryWord = randomWords();
   let queryOptions = getNewspaper().getRecord(queryWord);
   const result = await queryAPI(queryOptions);
-  recordID = result.data.hits[0].scope
+  recordID = result.data.hits[0].scope;
 
   queryOptions = getNewspaper().getManifest(recordID);
   const manifest = await queryAPI(queryOptions);
 
-  fs.writeFileSync(
-    "datasets/newspaper.json",
-    JSON.stringify(manifest.data)
-  );
+  fs.writeFileSync("datasets/newspaper.json", JSON.stringify(manifest.data));
 
   return {
     assets: [manifest.data["@type"]],
