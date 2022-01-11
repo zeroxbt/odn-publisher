@@ -7,7 +7,8 @@ module.exports = getRandomNewspaperdata = async () => {
   const queryWord = randomWords();
   let queryOptions = getNewspaper().getRecord(queryWord);
   const result = await queryAPI(queryOptions);
-  recordID = result.data.hits[0].scope;
+  const randomHit = Math.floor(Math.random() * result.hits.length);
+  const recordID = result.data.hits[randomHit].scope;
 
   queryOptions = getNewspaper().getManifest(recordID);
   const manifest = await queryAPI(queryOptions);
