@@ -40,8 +40,8 @@ exports.getNewspaper = () => ({
     config: {
       params: {
         query: queryWord,
-        profile: 'hits',
-        wskey: process.env.WSKEY
+        profile: "hits",
+        wskey: process.env.WSKEY,
       },
     },
   }),
@@ -75,13 +75,13 @@ exports.getRandomDPLA = (phrase) => ({
 });
 
 exports.getArcticInfrastructure = () => ({
-  getRecord: (pageIndex,perPage) => ({
+  getRecord: (pageIndex, perPage) => ({
     path: `https://isaaffik.org/api/infrastructures?`,
     config: {
       params: {
         page: pageIndex,
         itemsPerPage: perPage,
-        pagination: true
+        pagination: true,
       },
     },
   }),
