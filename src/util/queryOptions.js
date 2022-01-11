@@ -86,13 +86,10 @@ exports.getArcticInfrastructure = () => ({
     },
   }),
   getInfrastructure: (recordID) => ({
-    path: `https://isaaffik.org${recordID}/`,
+    path: `https://isaaffik.org${recordID}.jsonld`,
     config: {
       params: {
         //
-      },
-      headers: {
-        accept: "application / ld + json",
       },
     },
   }),
