@@ -9,19 +9,22 @@ module.exports = getRandomDPLAdata = async () => {
   let queryOptions = getRandomDPLA(phrase);
   const result = await queryAPI(queryOptions);
 
-  let dataSet = {
-    "@context": "http://dp.la/api/items/context",
-    "@type": phrase,
-    "@graph": result.data.docs,
-  };
-  dataSet["@graph"].forEach((item) => delete item["@context"]);
-  dataSet = await compact(dataSet, {});
-  console.log(dataSet);
+  const dataSet = result.data;
+  console.log(dataSet.docs[0]);
   //just write the first doc returned
   fs.writeFileSync("datasets/dpla.json", JSON.stringify(dataSet));
 
-  const assets = Array.isArray(dataSet["@graph"])
-    ? dataSet["@graph"].reduce((set, item) => {
+  console.log(Array.isArray(dataSet.docs));
+  console.log(
+    dataSet.docs.reduce((set, item) => {
+      const id = item["@id"];
+      if (id) set.add(id);
+      return set;
+    }, new Set())
+  );
+
+  const assets = Array.isArray(dataSet.docs)
+    ? dataSet.docs.reduce((set, item) => {
         const type = item["@type"];
         if (Array.isArray(type)) type.forEach((t) => set.add(t));
         else if (type) set.add(type);
@@ -29,16 +32,13 @@ module.exports = getRandomDPLAdata = async () => {
       }, new Set())
     : [];
 
-  const keywords = Array.isArray(dataSet["@graph"])
-    ? dataSet["@graph"].reduce((set, item) => {
+  const keywords = Array.isArray(dataSet.docs)
+    ? dataSet.docs.reduce((set, item) => {
         const id = item["@id"];
         if (id) set.add(id);
         return set;
       }, new Set())
     : [];
-
-  console.log("keywords : " + keywords);
-  console.log("assets : " + assets);
 
   return { assets: [...assets], keywords: [...keywords] };
 };
