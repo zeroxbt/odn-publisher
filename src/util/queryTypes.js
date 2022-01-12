@@ -5,6 +5,7 @@ const getRandomNewspaper = require("../queries/queryNewspaper");
 const getRandomMarineRegions = require("../queries/queryMarineRegions");
 const getRandomDPLA = require("../queries/queryDPLA");
 const getRandomArcticInfrastructure = require("../queries/queryArcticInfrastructure");
+const getRandomArcticMapData = require("../queries/queryArcticMapData");
 
 const queryTypes = [
   {
@@ -41,6 +42,11 @@ const queryTypes = [
     name: "isaaffik.org on arctic infrastructure",
     getData: () => getRandomArcticInfrastructure(),
     filepath: "datasets/arcticinfrastructure.json",
+  },
+    {
+    name: "isaaffik.org on arctic map data",
+    getData: () => getRandomArcticMapData(),
+    filepath: "datasets/arcticmapdata.json",
   },
 ];
 

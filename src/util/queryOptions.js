@@ -86,3 +86,24 @@ exports.getArcticInfrastructure = () => ({
     config: {},
   }),
 });
+
+exports.getArcticMapData = () => ({
+  getRecord: (page, itemsPerPage) => ({
+    path: `https://isaaffik.org/api/map_locations?`,
+    config: {
+      params: {
+        page,
+        itemsPerPage,
+        pagination: true,
+      },
+    },
+  }),
+  getMapData: (recordID) => ({
+    path: `https://isaaffik.org${recordID}.jsonld`,
+    config: {},
+  }),
+  getContext: () => ({
+    path: "https://isaaffik.org/api/contexts/MapLocation",
+    config: {},
+  }),
+});
