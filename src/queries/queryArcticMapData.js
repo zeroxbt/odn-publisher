@@ -3,7 +3,7 @@ const queryAPI = require("../util/queryAPI");
 const { getArcticMapData } = require("../util/queryOptions");
 
 module.exports = getRandomArcticMapData = async () => {
-  const pageIndex = Math.floor(Math.random() * 5);
+  const pageIndex = Math.floor(Math.random() * 560);
   let queryOptions = getArcticMapData().getRecord(pageIndex, 100)
   const result = await queryAPI(queryOptions);
 
