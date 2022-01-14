@@ -12,13 +12,24 @@ module.exports = getRandomWikidata = async () => {
   const firstElement = compacted["@graph"][0];
   const dataSet = {
     ...firstElement,
-    "@graph": compacted["@graph"].slice(1),
+    "@graph": compacted["@graph"],
   };
 
   await fs.promises.writeFile(
     `datasets/wikidata.json`,
     JSON.stringify(dataSet)
   );
-
-  return { assets: [dataSet["@type"]], keywords: [dataSet["@id"]] };
+  
+  const keywords = Array.isArray(dataSet["@graph"])
+    ? dataSet["@graph"].reduce((set, item) => {
+        const type = item["@type"];
+        const name = item["http://schema.org/name"];
+        if (type == "http://wikiba.se/ontology#Item") 
+            if (Array.isArray(name)) [];
+            else if (name) set.add(name["@value"]);
+        return set;
+      }, new Set())
+    : [];
+  console.log(keywords);
+  return { assets: [dataSet["@type"]], keywords: [...keywords] };
 };
