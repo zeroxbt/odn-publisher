@@ -2,11 +2,13 @@
 Description=odn-publisher
 
 [Service]
-ExecStart=~/odn-publisher/index.js
+ExecStart=/root/odn-publisher/index.js
 Restart=always
+User=nobody
+Group=nogroup
 Environment=PATH=/usr/bin:/usr/local/bin
 Environment=NODE_ENV=production
-WorkingDirectory=~/odn-publisher
+WorkingDirectory=/root/odn-publisher
 
 [Install]
 WantedBy=multi-user.target
