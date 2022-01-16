@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-npm start
+npm start index.js
