@@ -2,7 +2,7 @@
 Description=odn-publisher
 
 [Service]
-ExecStart=/root/odn-publisher/index.js
+ExecStart=/root/odn-publisher/odnpublisher.sh
 Restart=always
 User=nobody
 Group=nogroup
