@@ -2,13 +2,13 @@
 Description=odn-publisher
 
 [Service]
-ExecStart=/root/odn-publisher/odnpublisher.sh
+ExecStart=odn-publisher/odnpublisher.sh
 Restart=always
 User=nobody
 Group=nogroup
 Environment=PATH=/usr/bin:/usr/local/bin
 Environment=NODE_ENV=production
-WorkingDirectory=/root/odn-publisher
+WorkingDirectory=odn-publisher
 
 [Install]
 WantedBy=multi-user.target
