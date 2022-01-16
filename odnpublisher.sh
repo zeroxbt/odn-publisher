@@ -1,3 +1,4 @@
 #!/bin/bash
 
-npm start /odn-publisher/index.js
+cd odn-publisher
+npm start index.js
