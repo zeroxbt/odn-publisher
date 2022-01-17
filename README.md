@@ -1,23 +1,68 @@
 # odn-publisher
 
-Currently, SSL needs to be disabled to use this script.
+## __Prerequisites__
+________
 
-Running Origintrail V6 Beta 1 testnode required.
+SSL disabled
 
-Install: sudo git clone https://github.com/zeroxbt/odn-publisher.git && cd odn-publisher && sudo npm i
+Origintrail V6 Beta 1 node installed
 
-Run: npm start
+## __Installation__
+__________
 
-**API keys.**  
-Several API keys are required, all of them needs to be specified in **.env** file.
+### __Initial setup:__
+```
+sudo git clone https://github.com/zeroxbt/odn-publisher.git && cd odn-publisher && mkdir datasets && sudo npm i
+```
+Next, __API keys__ are required and they need to be put in the .env file
 
+```
+cp .env-example .env
+```
+```
+nano .env
+```
+### __API Keys:__
 **Google API Key**  
-How to create one? https://developers.google.com/knowledge-graph/how-tos/authorizing  
-If Google KG search requests fails with 403 even after API key is created and specified, then it's possible Google KG search is disabled.  
-If this is the case, enable Google KG API search here - https://console.developers.google.com/apis/api/kgsearch.googleapis.com/
+1. Log in to your Google account
+2. https://console.developers.google.com/apis/credentials
+3. Click on **+ Create Credentials** and select **API Key**
+4. Copy the **API KEY** to the .env file
+5. If Google KG search requests fails with 403 even after API key is created and specified, then it's possible Google KG search is disabled. If this is the case, enable Google KG API search here - https://console.developers.google.com/apis/api/kgsearch.googleapis.com/
 
 **Europeana API Key**  
-Get one here - https://pro.europeana.eu/page/get-api
+https://pro.europeana.eu/page/get-api
 
-**DPLA(digital public library of america)**  
-To get one run this - curl -v -XPOST https://api.dp.la/v2/api_key/<put_your_email_here>
+**Digital Public Library of America (DPLA)**  
+Replace <put_your_email_here> by your email address
+```
+curl -v -XPOST https://api.dp.la/v2/api_key/<put_your_email_here>
+```
+### __Publishing:__
+
+You can run the following command to start publishing datasets right away, but if you want to run it as a background process, skip the following command
+```
+npm start
+```
+To run the odn-publisher as a background service, 
+```
+cp odnpublisher.service /etc/systemd/system
+```
+```
+systemctl daemon-reload
+```
+```
+systemctl start odnpublisher
+```
+To view the status of the service,
+```
+systemctl status odnpublisher
+```
+To enable the service at reboot,
+```
+systemctl enable odnpublisher
+```
+To view the logs of the publisher,
+```
+journalctl -f -u odnpublisher
+```
