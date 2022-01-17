@@ -1,0 +1,11 @@
+[Unit]
+Description=odn-publisher
+
+[Service]
+Type=simple
+WorkingDirectory=/root/odn-publisher
+ExecStart=/root/odn-publisher/odnpublisher.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
