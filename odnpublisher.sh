@@ -1,4 +1,7 @@
 #!/bin/bash
 
-cd odn-publisher
+LOG_LOCATION=/root/logs
+
 npm start index.js
+
+exec >> $LOG_LOCATION/odnpublisher.log 2>&1
