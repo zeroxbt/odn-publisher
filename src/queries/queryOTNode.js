@@ -11,23 +11,6 @@ let options = {
 };
 const dkg = new DKGClient(options);
 
-// module.exports = publish = async (assets, keywords, filepath) => {
-//   options = {
-//     filepath,
-//     assets,
-//     keywords,
-//     visibility: true,
-//   };
-//   await dkg
-//     .publish(options)
-//     .then((result) => {
-//       console.log(JSON.stringify(result));
-//     })
-//     .catch((error) => {
-//       console.log(`error publishing to the network. ${error}`);
-//     });
-// };
-
 module.exports = {
   publish: async function publish(assets, keywords, filepath) {
     options = {
@@ -67,14 +50,10 @@ module.exports = {
      await dkg
      .search(options)
      .then((result) => {
- 			if(result.status == 'FAILED'){
-        console.log('\x1b[31mSearch Failed!')
-        console.log('\x1b[31m',result.error)
- 			}
-   			console.log('\x1b[32mSearch Completed!')
-   			console.log(' ')
-   			console.log('\x1b[32mHeres a string of the result data!')
-        console.log('\x1b[32m',JSON.stringify(result.data));
- 			});
+       console.log(JSON.stringify(result));
+     })
+     .catch((error) => {
+       console.log(`error searching the network. ${error}`);
+     });
   },
 };

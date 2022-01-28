@@ -15,8 +15,7 @@ const publish = async () => {
 
         if(process.env.ENABLE_SEARCH == 'Y'){
           console.log(`Search is enabled.`);
-          await publishToODN.search(keywords)
-          .catch((error) => console.log(`Error : ${error}`));
+          await publishToODN.search(keywords);
         }
       })
       .catch((error) => console.log(`Error : ${error}`));
