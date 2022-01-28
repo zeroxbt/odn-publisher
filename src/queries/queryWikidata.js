@@ -30,6 +30,5 @@ module.exports = getRandomWikidata = async () => {
         return set;
       }, new Set())
     : [];
-  console.log(keywords);
   return { assets: [dataSet["@type"]], keywords: [...keywords] };
 };
