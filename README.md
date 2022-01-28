@@ -65,6 +65,7 @@ systemctl enable odnpublisher
 To view the logs of the publisher,
 ```
 journalctl -f -u odnpublisher
+```
 
-```### __Searching:__
+### __Searching:__
 You can enable searching of the the dataset after publishing in .env
