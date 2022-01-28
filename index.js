@@ -11,9 +11,15 @@ const publish = async () => {
     await query
       .getData()
       .then(async ({ assets, keywords }) => {
-        await publishToODN(assets, keywords, query.filepath);
+        await publishToODN.publish(assets, keywords, query.filepath);
+
+        if(process.env.ENABLE_SEARCH == 'Y'){
+          console.log(`Search is enabled.`);
+          await publishToODN.search(keywords);
+        }
       })
       .catch((error) => console.log(`Error : ${error}`));
+
     queryIndex = (queryIndex + 1) % queryListLen;
   }
 };

@@ -18,8 +18,7 @@ module.exports = getRandomWeatherdata = async () => {
 
   fs.writeFileSync(
     "datasets/weather.json",
-    JSON.stringify(latest_station_observations.data)
-  );
+    JSON.stringify(latest_station_observations.data));
 
   return {
     assets: [latest_station_observations.data.properties["@type"]],
