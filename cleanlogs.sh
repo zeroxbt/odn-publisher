@@ -9,5 +9,5 @@ rm -r /var/log/journal/*
 echo "rm ~/ot-node/out.log"
 rm ~/ot-node/out.log
 
-echo "rm -rf ~/ot-node/logs/"
+echo "rm -rf ~/ot-node/logs/*"
 rm -rf ~/ot-node/logs/*
