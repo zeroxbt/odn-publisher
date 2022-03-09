@@ -17,7 +17,7 @@ module.exports = {
       filepath,
       assets,
       keywords,
-      visibility: true,
+      visibility: "public",
     };
     await dkg
       .publish(options)
