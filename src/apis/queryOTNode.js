@@ -1,9 +1,9 @@
 const DKGClient = require("dkg.js");
 
 const dkg = new DKGClient({
-  endpoint: process.env.USE_SSL ? "https://0.0.0.0" : "http://0.0.0.0",
+  endpoint: process.env.USE_SSL === true ? "https://0.0.0.0" : "http://0.0.0.0",
   port: 8900,
-  useSSL: !!process.env.USE_SSL,
+  useSSL: process.env.USE_SSL,
 });
 
 const blockchain = {
