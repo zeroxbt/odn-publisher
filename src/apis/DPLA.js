@@ -16,7 +16,7 @@ module.exports = getRandomDPLAdata = async () => {
     tries++;
   }
 
-  dataSet["@graph"].forEach((x) => delete x["@context"]);
+  result.data.docs.forEach((x) => delete x["@context"]);
 
   return {"@graph": result.data.docs, "@context": context};
 };
