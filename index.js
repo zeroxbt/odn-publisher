@@ -1,26 +1,18 @@
-const publishToODN = require("./src/queries/queryOTNode");
-const queryTypes = require("./src/util/queryTypes");
 require("dotenv").config();
+const { setTimeout } = require("timers/promises");
+const { publish, get } = require("./src/queries/queryOTNode");
+const apis = require("./src/util/apis");
 
-const publish = async () => {
-  let queryIndex = 0;
-  const queryListLen = queryTypes.queryListLen();
+(async () => {
   while (true) {
-    query = queryTypes.query(queryIndex);
-    console.log(`About to publish dataset taken from ${query.name}`);
-    await query
-      .getData()
-      .then(async ({ assets, keywords }) => {
-        await publishToODN.publish(assets, keywords, query.filepath);
-
-        if(process.env.ENABLE_SEARCH == 'Y'){
-          console.log(`Search is enabled.`);
-          await publishToODN.search(keywords);
-        }
-      })
-      .catch((error) => console.log(`Error : ${error}`));
-
-    queryIndex = (queryIndex + 1) % queryListLen;
+    for (const api of apis) {
+      console.log(`About to publish dataset taken from ${api.name}`);
+      const data = await api.getData();
+      const publishResult = await publish(data);
+      if (publishResult?.UAL) {
+        get(publishResult.UAL);
+      }
+      await setTimeout(5 * 1000);
+    }
   }
-};
-publish();
+})();

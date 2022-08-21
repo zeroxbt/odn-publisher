@@ -11,8 +11,8 @@
   "dependencies": {
     "axios": "^0.24.0",
     "dkg-client": "^6.0.0-beta.1.5",
+    "dkg.js": "^6.0.0-beta.3.0.1",
     "dotenv": "^10.0.0",
-    "jsonld": "^5.2.0",
     "random-words": "^1.1.1"
   }
 }

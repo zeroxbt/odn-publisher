@@ -12,7 +12,7 @@ __________
 
 ### __Initial setup:__
 ```
-sudo git clone https://github.com/zeroxbt/odn-publisher.git && cd odn-publisher && mkdir datasets && sudo npm i
+sudo git clone https://github.com/zeroxbt/odn-publisher.git && cd odn-publisher && sudo npm i
 ```
 Next, __API keys__ are required and they need to be put in the .env file
 

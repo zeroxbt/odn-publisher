@@ -1,5 +1,7 @@
-exports.getWikidata = (dataId) => ({
-  path: `https://www.wikidata.org/wiki/Special:EntityData/Q${dataId}.jsonld`,
+exports.getWikidata = () => ({
+  path: `https://www.wikidata.org/wiki/Special:EntityData/Q${Math.floor(
+    Math.random() * 9999999
+  )}.jsonld`,
   config: {},
 });
 
@@ -100,10 +102,6 @@ exports.getArcticMapData = () => ({
   }),
   getMapData: (recordID) => ({
     path: `https://isaaffik.org${recordID}.jsonld`,
-    config: {},
-  }),
-  getContext: () => ({
-    path: "https://isaaffik.org/api/contexts/MapLocation",
     config: {},
   }),
 });
