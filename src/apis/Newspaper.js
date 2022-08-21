@@ -1,5 +1,5 @@
-const queryAPI = require("../util/queryAPI");
-const { getNewspaper } = require("../util/queryOptions");
+const fetchData = require("../util/fetchData");
+const { getNewspaper } = require("../util/apiOptions");
 var randomWords = require("random-words");
 
 module.exports = getRandomNewspaperdata = async () => {
@@ -8,12 +8,12 @@ module.exports = getRandomNewspaperdata = async () => {
   while (!result) {
     if (tries >= 3) throw Error("max number of retries reached.");
     const queryWord = randomWords();
-    let queryOptions = getNewspaper().getRecord(queryWord);
-    result = await queryAPI(queryOptions);
+    let apiOptions = getNewspaper().getRecord(queryWord);
+    result = await fetchData(apiOptions);
     const randomHit = Math.floor(Math.random() * result.data.hits.length);
     const recordID = result.data.hits[randomHit].scope;
-    queryOptions = getNewspaper().getManifest(recordID);
-    result = await queryAPI(queryOptions);
+    apiOptions = getNewspaper().getManifest(recordID);
+    result = await fetchData(apiOptions);
     tries++;
   }
 

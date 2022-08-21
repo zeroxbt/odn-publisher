@@ -1,6 +1,6 @@
 const context = require("../../contexts/dpla.json")
-const queryAPI = require("../util/queryAPI");
-const { getRandomDPLA } = require("../util/queryOptions");
+const fetchData = require("../util/fetchData");
+const { getRandomDPLA } = require("../util/apiOptions");
 const randomWords = require("random-words");
 
 module.exports = getRandomDPLAdata = async () => {
@@ -11,10 +11,12 @@ module.exports = getRandomDPLAdata = async () => {
     if (tries >= 3) throw Error("max number of retries reached.");
     words = [randomWords(), randomWords()];
     const phrase = `${words[0]}+AND+${words[1]}`;
-    const queryOptions = getRandomDPLA(phrase);
-    result = await queryAPI(queryOptions);
+    const apiOptions = getRandomDPLA(phrase);
+    result = await fetchData(apiOptions);
     tries++;
   }
 
-  return {...result.data.docs, "@context": context};
+  dataSet["@graph"].forEach((x) => delete x["@context"]);
+
+  return {"@graph": result.data.docs, "@context": context};
 };

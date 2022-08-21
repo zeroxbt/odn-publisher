@@ -1,10 +1,10 @@
-const getRandomWikidata = require("../apis/queryWikidata");
-const getRandomGoogle = require("../apis/queryGoogleKG");
-const getRandomWeather = require("../apis/queryWeather");
-const getRandomNewspaper = require("../apis/queryNewspaper");
-const getRandomMarineRegions = require("../apis/queryMarineRegions");
-const getRandomDPLA = require("../apis/queryDPLA");
-const getRandomArcticInfrastructure = require("../apis/queryArcticInfrastructure");
+const getRandomWikidata = require("../apis/Wikidata");
+const getRandomGoogle = require("../apis/GoogleKG");
+const getRandomWeather = require("../apis/Weather");
+const getRandomNewspaper = require("../apis/Newspaper");
+const getRandomMarineRegions = require("../apis/MarineRegions");
+const getRandomDPLA = require("../apis/DPLA");
+const getRandomArcticInfrastructure = require("../apis/ArcticInfrastructure");
 
 module.exports = [
   ...[

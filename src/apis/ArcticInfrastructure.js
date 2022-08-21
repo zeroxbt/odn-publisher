@@ -1,6 +1,6 @@
 const context = require("../../contexts/arcticInfrastructure.json")
-const queryAPI = require("../util/queryAPI");
-const { getArcticInfrastructure } = require("../util/queryOptions");
+const fetchData = require("../util/fetchData");
+const { getArcticInfrastructure } = require("../util/apiOptions");
 
 module.exports = getRandomArcticInfradata = async () => {
   let result;
@@ -8,8 +8,8 @@ module.exports = getRandomArcticInfradata = async () => {
   while (!result) {
     if (tries >= 3) throw Error("max number of retries reached.");
     const pageIndex = Math.floor(Math.random() * 7);
-    let queryOptions = getArcticInfrastructure().getRecord(pageIndex, 100);
-    result = await queryAPI(queryOptions);
+    let apiOptions = getArcticInfrastructure().getRecord(pageIndex, 100);
+    result = await fetchData(apiOptions);
     if (!result) {
       continue;
     }
@@ -17,8 +17,8 @@ module.exports = getRandomArcticInfradata = async () => {
       Math.random() * result.data["hydra:member"].length
     );
     recordID = result.data["hydra:member"][infraIndex]["@id"];
-    queryOptions = getArcticInfrastructure().getInfrastructure(recordID);
-    result = await queryAPI(queryOptions);
+    apiOptions = getArcticInfrastructure().getInfrastructure(recordID);
+    result = await fetchData(apiOptions);
     tries++;
   }
 

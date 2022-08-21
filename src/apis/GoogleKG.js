@@ -1,6 +1,6 @@
 const randomWords = require("random-words");
-const queryAPI = require("../util/queryAPI");
-const { getGoogle } = require("../util/queryOptions");
+const fetchData = require("../util/fetchData");
+const { getGoogle } = require("../util/apiOptions");
 
 module.exports = getRandomGoogle = async () => {
   let result;
@@ -12,8 +12,8 @@ module.exports = getRandomGoogle = async () => {
     words.push(randomWords());
     words.push(randomWords());
     query = `${words[0]}-${words[1]}`;
-    const queryOptions = getGoogle(query);
-    result = await queryAPI(queryOptions);
+    const apiOptions = getGoogle(query);
+    result = await fetchData(apiOptions);
     tries++;
   }
 

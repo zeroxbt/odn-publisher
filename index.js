@@ -1,6 +1,6 @@
 require("dotenv").config();
 const { setTimeout } = require("timers/promises");
-const { publish, get } = require("./src/apis/queryOTNode");
+const { publish, get } = require("./src/apis/OTNode");
 const apis = require("./src/util/apis");
 
 const logPrettyJSON = (data) => console.log(JSON.stringify(data, null, 2));
