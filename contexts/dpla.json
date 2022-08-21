@@ -1,0 +1,27 @@
+{
+  "begin": {
+    "@id": "dpla:dateRangeStart",
+    "@type": "date"
+  },
+  "@vocab": "http://purl.org/dc/terms/",
+  "hasView": "edm:hasView",
+  "name": "string",
+  "object": "edm:object",
+  "sourceResource": "edm:sourceResource",
+  "dpla": "http://dp.la/terms/",
+  "collection": "dpla:aggregation",
+  "edm": "http://www.europeana.eu/schemas/edm/",
+  "state": "dpla:state",
+  "aggregatedDigitalResource": "dpla:aggregatedDigitalResource",
+  "coordinates": "dpla:coordinates",
+  "isShownAt": "edm:isShownAt",
+  "provider": "edm:provider",
+  "stateLocatedIn": "dpla:stateLocatedIn",
+  "end": {
+    "@id": "dpla:dateRangeEnd",
+    "@type": "date"
+  },
+  "dataProvider": "edm:dataProvider",
+  "originalRecord": "dpla:originalRecord",
+  "LCSH": "http://id.loc.gov/authorities/subjects"
+}

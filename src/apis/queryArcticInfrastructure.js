@@ -1,3 +1,4 @@
+const context = require("../../contexts/arcticInfrastructure.json")
 const queryAPI = require("../util/queryAPI");
 const { getArcticInfrastructure } = require("../util/queryOptions");
 
@@ -21,5 +22,5 @@ module.exports = getRandomArcticInfradata = async () => {
     tries++;
   }
 
-  return result.data;
+  return {...result.data, "@context": context};
 };

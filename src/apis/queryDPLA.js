@@ -1,3 +1,4 @@
+const context = require("../../contexts/dpla.json")
 const queryAPI = require("../util/queryAPI");
 const { getRandomDPLA } = require("../util/queryOptions");
 const randomWords = require("random-words");
@@ -15,5 +16,5 @@ module.exports = getRandomDPLAdata = async () => {
     tries++;
   }
 
-  return result.data.docs;
+  return {...result.data.docs, "@context": context};
 };
