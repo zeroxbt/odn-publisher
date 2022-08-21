@@ -1,6 +1,6 @@
 require("dotenv").config();
 const { setTimeout } = require("timers/promises");
-const { publish, get } = require("./src/queries/queryOTNode");
+const { publish, get } = require("./src/apis/queryOTNode");
 const apis = require("./src/util/apis");
 
 (async () => {
