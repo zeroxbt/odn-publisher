@@ -38,6 +38,7 @@ Replace <put_your_email_here> by your email address
 ```
 curl -v -XPOST https://api.dp.la/v2/api_key/<put_your_email_here>
 ```
+Then add your nodes public and private key into the .env file
 ### __Publishing:__
 
 You can run the following command to start publishing datasets right away, but if you want to run it as a background process, skip the following command
