@@ -18,9 +18,9 @@ const logPrettyJSON = (data) => console.log(JSON.stringify(data, null, 2));
       logPrettyJSON(publishResult)
 
       // get asset
-      if (publishResult?.UAL) {
+      if (publishResult?.operation?.status === "COMPLETED") {
         const getResult = await get(publishResult.UAL);
-        logPrettyJSON(getResult)
+        logPrettyJSON(getResult);
       }
 
       // sleep 5 seconds
